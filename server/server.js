@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const authRouter = require("./routes/auth/auth-routes");
 
 mongoose
-  .connect("mongodb+srv://nuttipol-r:VItaichi1978@cluster0.5mnk9.mongodb.net/")
+  .connect("mongodb+srv://nuttipol-r:mernecommerce2024@cluster0.5mnk9.mongodb.net/")
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -28,5 +29,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
